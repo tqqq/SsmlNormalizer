@@ -26,7 +26,11 @@ def main():
     ssml_text = (
         """<speak xml:lang="zh-CN">"""
         """今天是2023年10月15日，气温是25度。"""
-        """<say-as interpret-as="digits">12345</say-as>"""
+        """<say-as interpret-as="date" format="ym">2023-12</say-as>"""
+        """<say-as interpret-as="date" format="ym">23-12</say-as>"""
+        """<say-as interpret-as="date" format="Ymd">2023-12-23</say-as>"""
+        """<say-as>2019-02-03</say-as>"""
+        """<say-as>190203</say-as>"""
         """<voice name="female">"""
         """这是女声部分，包含数字987。"""
         """<prosody rate="slow">"""
