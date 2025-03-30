@@ -1,0 +1,5 @@
+# importlib_resources==6.5.2
+# pynini==2.1.6
+# setuptools==75.8.0
+WeTextProcessing==1.0.4.1
+# wheel==0.45.1
