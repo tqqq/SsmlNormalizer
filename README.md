@@ -1,2 +1,2 @@
-# SsmlParser
-Parse the SSML text into tokens recognizable by A TTS model.
+# Ssml Normalizer
+Parse the SSML text and Normalize.
