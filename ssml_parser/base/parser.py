@@ -1,5 +1,6 @@
 # coding=utf-8
 from xml.etree import ElementTree as ET
+import re
 from .element import (
     SsmlElement, SsmlNodeElement, SsmlLeafElement,
     Speak, Prosody, Voice, Lang,
@@ -20,6 +21,12 @@ class SsmlParser:
 
     def parse(self, text: str) -> SsmlElement:
         root = ET.fromstring(text)
+        # 获取speak标签的xmlns属性
+        speak_tag = re.findall(f"<speak.*?>", text)[0]
+        xmlns = re.findall(f'xmlns="(.*?)"', speak_tag)
+        if xmlns:
+            self.namespaces[0][xmlns[0]] = ""
+
         return self._parse_element(None, root)
 
     def _parse_element(self, parent: SsmlElement | None, root: ET.Element) -> SsmlElement:
@@ -94,18 +101,18 @@ class SsmlParser:
             if namespace in ns:
                 prefix = ns[namespace]
                 return f"{prefix}:{tag}" if prefix else tag
-        raise ValueError("Namespace not found for tag: {full_name}")
+        raise ValueError(f"Namespace not found for tag: {full_name}")
 
 
-def print_node(node: SsmlElement, spaces = 0):
+# def print_node(node: SsmlElement, spaces = 0):
 
-    if isinstance(node, SsmlLeafElement):
-        print(" "*spaces + f"{node.tag_name()}({node.attrs}): {node.text}")
-    else:
-        print(" "*spaces + f"{node.tag_name()}({node.attrs})")
-        spaces += 2
-        for child in node.children:
-            print_node(child, spaces)
+#     if isinstance(node, SsmlLeafElement):
+#         print(" "*spaces + f"{node.tag_name()}({node.attrs}): {node.text}")
+#     else:
+#         print(" "*spaces + f"{node.tag_name()}({node.attrs})")
+#         spaces += 2
+#         for child in node.children:
+#             print_node(child, spaces)
 
 
 
